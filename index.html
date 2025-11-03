@@ -39,13 +39,13 @@
       <div class="carousel slide mx-auto" id="carrusel-inicio" style="max-width: 800px;">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img\imagen2.jpeg" class="d-block w-100" alt="Imagen 1">
+            <img src="img/imagen2.jpeg" class="d-block w-100" alt="Imagen 1">
           </div>
           <div class="carousel-item">
-            <img src="img\imagen1.jpeg" class="d-block w-100" alt="Imagen 2">
+            <img src="img/imagen1.jpeg" class="d-block w-100" alt="Imagen 2">
           </div>
           <div class="carousel-item">
-            <img src="img\imagen3.jpg" class="d-block w-100" alt="Imagen 3">
+            <img src="img/imagen3.jpg" class="d-block w-100" alt="Imagen 3">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carrusel-inicio" data-bs-slide="prev">
@@ -57,11 +57,51 @@
       </div>
     </div>
 
-    <div id="modulo" class="panel">Contenido del módulo principal</div>
+    <!-- Contenido del módulo principal -->
+    <div id="modulo" class="panel">
+      <h2 class="text-center my-3">Módulo Principal</h2>
+      <p>
+        El módulo principal del sistema de control de almacén fue diseñado para gestionar de manera 
+        eficiente los materiales de escritorio y limpieza de la Unidad de Administración Policial de La Paz. 
+        Este módulo centraliza los procesos de ingreso, salida y distribución de materiales a las siete 
+        unidades policiales dependientes, garantizando transparencia, control presupuestario y trazabilidad.
+      </p>
+      <p>
+        Su implementación permite reducir errores humanos, eliminar la duplicidad de registros y 
+        facilitar reportes automáticos sobre inventario y consumo. Además, el sistema ofrece distintos 
+        niveles de acceso (administrador, jefe de almacén y usuario), asegurando un manejo ordenado y seguro.
+      </p>
+      <div class="text-center my-3">
+        <img src="img/modulo.jpg" alt="Imagen del módulo del sistema" class="img-fluid rounded shadow" style="max-width:600px;">
+      </div>
+    </div>
+
+    <!-- Contenido del marco teórico -->
+    <div id="teorico" class="panel">
+      <h2 class="text-center my-3">Marco Teórico del Proyecto</h2>
+      <p>
+        El sistema surge ante la necesidad de modernizar la gestión manual de materiales dentro de la Unidad de 
+        Administración Policial de La Paz. La falta de registros digitales ocasionaba pérdidas, retrasos y 
+        dificultades en el control presupuestario.
+      </p>
+      <p>
+        El proyecto tiene como objetivo general desarrollar un sistema informático que permita administrar 
+        los materiales de escritorio y limpieza de manera automatizada. El enfoque de investigación fue mixto, 
+        utilizando observación, entrevistas, encuestas y análisis de datos presupuestarios.
+      </p>
+      <p>
+        Entre los principales resultados esperados están la optimización de recursos, una distribución más 
+        equitativa, generación de reportes automáticos y la mejora de la transparencia institucional. 
+        El sistema se implementará inicialmente en la Unidad Central con posibilidad de expansión a otras regiones policiales.
+      </p>
+      <div class="text-center my-3">
+        <img src="img/marcoteorico.jpg" alt="Imagen representativa del marco teórico" class="img-fluid rounded shadow" style="max-width:600px;">
+      </div>
+    </div>
+
     <div id="ambiental" class="panel">Contenido del módulo ambiental</div>
     <div id="comportamiento" class="panel">Contenido del módulo comportamiento</div>
     <div id="oop" class="panel">Contenido orientado a objetos</div>
-    <div id="teorico" class="panel">Marco teórico del proyecto</div>
     <div id="video" class="panel">Espacio para insertar video</div>
   </div>
 
@@ -89,7 +129,6 @@
     });
   });
 
-
   subitems.forEach(subitem => {
     subitem.addEventListener('click', () => {
       const targetId = subitem.getAttribute('data-content');
@@ -103,7 +142,5 @@
   });
 </script>
 
-
 </body>
 </html>
-
