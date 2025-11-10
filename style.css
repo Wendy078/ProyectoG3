@@ -2,13 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --color-primario: #273c75;
-  --color-secundario: #40739e;
-  --color-fondo: #f5f6fa;
-  --color-texto: #2f3640;
-  --color-panel: #ffffff;
-  --color-gris-suave: #dcdde1;
-  --radio: 16px;
+
+  --color-primario: #556B2F;       
+  --color-secundario: #D4AF37;     
+  --color-terciario: #2F4F4F;      
+  --color-fondo: #f8f9fa;          
+  --color-texto: #2d3748;          
+  --color-panel: #ffffff;          
+  --color-gris-suave: #e2e8f0;     
+  --radio: 12px;
   --transicion: all 0.3s ease;
 }
 
@@ -19,23 +21,152 @@
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  background-color: #ffffff; /* bordes laterales blancos */
   color: var(--color-texto);
   line-height: 1.6;
   scroll-behavior: smooth;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  
+  /* Fondo con degradado sutil */
+  background: linear-gradient(135deg, 
+    #2F4F4F 0%, 
+    #2F4F4F 50%, 
+    #2F4F4F 100%);
+}
+
+/* --- CONTENEDOR PRINCIPAL DE TARJETAS --- */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* --- TARJETAS INDIVIDUALES --- */
+.card-item {
+  background: #fff;
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(85, 107, 47, 0.1);
+  transition: var(--transicion);
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-gris-suave);
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(85, 107, 47, 0.15);
+  border-color: var(--color-secundario);
+}
+
+.card-img {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  border-radius: calc(var(--radio) - 4px);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.pastel1 {
+  width: 100%;
+  height: 100%;
+  background-image: url(img/imagen1.jpeg);
+  background-position: center;
+  background-size: cover;
+  border-radius: calc(var(--radio) - 4px);
+  transition: var(--transicion);
+}
+.pastel2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(img/imagen2.jpeg);
+  background-position: center;
+  background-size: cover;
+  border-radius: calc(var(--radio) - 4px);
+  transition: var(--transicion);
+}
+.pastel3 {
+  width: 100%;
+  height: 100%;
+  background-image: url(img/imagen3.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: calc(var(--radio) - 4px);
+  transition: var(--transicion);
+}
+.pastel4 {
+  width: 100%;
+  height: 100%;
+  background-image: url(img/imagen4.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: calc(var(--radio) - 4px);
+  transition: var(--transicion);
+}
+
+
+.card-item:hover .pastel1 {
+  transform: scale(1.05);
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primario);
+  margin: 0 0 0.5rem 0;
+}
+
+.text-body {
+  color: var(--color-texto);
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+  flex-grow: 1;
+  opacity: 0.8;
+}
+
+.card-button {
+  padding: 0.7rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primario), #6B8E23);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  width: 100%;
+}
+
+.card-button:hover {
+  background: linear-gradient(135deg, var(--color-secundario), #E6C200);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 /* --- Encabezado --- */
 .header {
-  background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+  background: linear-gradient(135deg, var(--color-primario), #6B8E23);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 1rem 2rem;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(85, 107, 47, 0.2);
   position: relative;
+  border-bottom: 4px solid var(--color-secundario);
 }
 
 .logo {
@@ -44,39 +175,31 @@ body {
   border-radius: 10px;
   margin-right: 1rem;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: var(--transicion);
+  border: 2px solid var(--color-secundario);
 }
 
 .logo:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
-.logo.ampliada {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2);
-  z-index: 2000;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.4);
-  border-radius: 20px;
-}
- /*s dsd*/
 .titulo {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   letter-spacing: 0.5px;
-  text-align: center; /* centra el texto */
-  flex: 1; /* permite que ocupe el espacio disponible del header */
+  text-align: center;
+  flex: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-
 
 /* --- Menú principal --- */
 .menu {
-  background: #fff;
-  border-bottom: 1px solid #e3e3e3;
+  background: linear-gradient(135deg, var(--color-primario), #6B8E23);
+  border-bottom: 3px solid var(--color-secundario);
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(85, 107, 47, 0.15);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -86,80 +209,88 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .menu .item {
   display: inline-block;
   padding: 1rem 1.5rem;
-  font-weight: 500;
-  color: var(--color-primario);
+  font-weight: 600;
+  color: #fff;
   position: relative;
   cursor: pointer;
   transition: var(--transicion);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
 .menu .item:hover {
+  background: rgba(212, 175, 55, 0.2);
   color: var(--color-secundario);
-  background-color: rgba(64, 115, 158, 0.05);
 }
 
-/* --- Submenú mejorado --- */
+/* Línea decorativa en hover */
+.menu .item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--color-secundario);
+  transition: var(--transicion);
+  transform: translateX(-50%);
+}
+
+.menu .item:hover::after {
+  width: 80%;
+}
+
+/* --- Submenú --- */
 .menu .submenu {
-  display: block; /* siempre en el DOM */
+  display: block;
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  background: #fff;
+  background: linear-gradient(135deg, var(--color-primario), #6B8E23);
   border-radius: var(--radio);
   top: 100%;
   left: 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(85, 107, 47, 0.3);
   min-width: 220px;
-  margin-top: 0.5rem;
+  margin-top: 0;
   overflow: hidden;
-  transition: opacity 1s ease, visibility 3s ease;
+  transition: var(--transicion);
   z-index: 999;
+  border: 1px solid var(--color-secundario);
 }
 
 .menu .submenu .subitem {
   padding: 0.75rem 1rem;
-  color: var(--color-texto);
+  color: #fff;
   text-align: left;
   transition: var(--transicion);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .menu .submenu .subitem:hover {
   background: var(--color-secundario);
-  color: #fff;
+  color: var(--color-primario);
 }
 
-/* Mostrar submenú al hover o con clase activa */
-.menu .item.active > .submenu,
 .menu .item:hover > .submenu {
   opacity: 1;
   visibility: visible;
 }
 
-/* --- Animación de aparición --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* --- Área central --- */
 #contenido-central {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4rem 1rem;
   min-height: 80vh;
-  background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+  background: transparent;
+  padding: 2rem 0;
 }
 
 /* --- Paneles de contenido --- */
@@ -170,12 +301,29 @@ body {
   width: 85%;
   max-width: 900px;
   margin: 2rem auto;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-  border: 1px solid #eaeaea;
+  box-shadow: 0 8px 30px rgba(85, 107, 47, 0.1);
+  border: 1px solid var(--color-gris-suave);
   text-align: left;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: var(--transicion);
+  background: var(--color-panel);
+  position: relative;
+  border-top: 4px solid var(--color-secundario);
+}
+
+/* MOSTRAR SOLO EL PANEL ACTIVO */
+.panel.active {
+  display: block;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .panel h2 {
@@ -184,20 +332,21 @@ body {
   font-size: 1.9rem;
   margin-bottom: 1.5rem;
   position: relative;
+  font-weight: 700;
 }
 
 .panel h2::after {
   content: "";
   display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--color-secundario);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secundario), var(--color-terciario));
   margin: 0.8rem auto 0;
   border-radius: 2px;
 }
 
 .panel p {
-  color: #222;
+  color: var(--color-texto);
   font-size: 1.05rem;
   margin-bottom: 1.2rem;
   text-align: justify;
@@ -205,160 +354,72 @@ body {
 }
 
 .panel img {
-  border-radius: 14px;
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  border-radius: calc(var(--radio) - 4px);
+  box-shadow: 0 4px 20px rgba(85, 107, 47, 0.1);
+  transition: var(--transicion);
   max-width: 95%;
   height: auto;
   display: block;
   margin: 1.5rem auto;
+  border: 2px solid var(--color-gris-suave);
 }
 
 .panel img:hover {
-  transform: scale(1.03);
-}
-
-.panel:target,
-.panel[style*="display: block"] {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- Carrusel --- */
-.carousel-inner img {
-  border-radius: var(--radio);
-  max-height: 400px;
-  object-fit: cover;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(100%);
+  transform: scale(1.02);
+  border-color: var(--color-secundario);
 }
 
 /* --- Footer --- */
 footer {
-  background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+  background: linear-gradient(135deg, var(--color-primario), #6B8E23);
   color: #fff;
   text-align: center;
-  padding: 1.8rem;
+  padding: 2rem;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
   margin-top: 3rem;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 20px rgba(85, 107, 47, 0.2);
+  border-top: 4px solid var(--color-secundario);
 }
 
 footer p {
   margin: 0;
   opacity: 0.9;
-}
-
-/* --- Botones generales --- */
-button, .btn {
-  background: var(--color-secundario);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
   font-weight: 500;
-  transition: var(--transicion);
-}
-
-button:hover, .btn:hover {
-  background: var(--color-primario);
-  transform: translateY(-2px);
 }
 
 /* --- Adaptabilidad móvil --- */
 @media (max-width: 768px) {
   .titulo {
-    font-size: 1rem;
-    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .menu ul {
+    flex-direction: column;
   }
 
   .menu .item {
     display: block;
-    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
   }
 
   .panel {
     width: 95%;
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 
   .header {
     flex-direction: column;
     text-align: center;
+    padding: 1rem;
   }
 
   .logo {
     margin-bottom: 0.5rem;
   }
-}
-
-/* --- Sutil animación al hacer hover --- */
-.menu .item::after {
-  content: "";
-  display: block;
-  height: 2px;
-  background: var(--color-secundario);
-  transform: scaleX(0);
-  transition: transform 1s ease;
-}
-
-.menu .item:hover::after {
-  transform: scaleX(1);
-}
-
-/* --- Fondos temáticos con overlay --- */
-#inicio {
-  background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('img/policias_fondo.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#modulo {
-  background: linear-gradient(rgba(200,255,200,0.5), rgba(200,255,200,0.5)), url('img/fondo_modulo.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#teorico {
-  background: linear-gradient(rgba(200,200,255,0.5), rgba(200,200,255,0.5)), url('img/fondo_teorico.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#ambiental {
-  background: linear-gradient(rgba(220,255,220,0.5), rgba(220,255,220,0.5)), url('img/fondo_ambiental.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#comportamiento {
-  background: linear-gradient(rgba(255,250,220,0.5), rgba(255,250,220,0.5)), url('img/fondo_comportamiento.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#oop {
-  background: linear-gradient(rgba(200,255,255,0.5), rgba(200,255,255,0.5)), url('img/fondo_oop.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-#video {
-  background: linear-gradient(rgba(255,220,220,0.5), rgba(255,220,220,0.5)), url('img/fondo_video.jpg') no-repeat center center;
-  background-size: cover;
-}
-
-/* Mantener legibilidad del texto sobre el fondo */
-.panel * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Overlay para que el contenido resalte */
-.panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.2); /* ajusta la opacidad según se vea mejor */
-  border-radius: var(--radio);
-  z-index: 0;
 }

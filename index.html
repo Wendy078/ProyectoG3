@@ -2,67 +2,70 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto Web</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-    /* Modal para logo ampliado */
-    .modal-logo {
-      display: none;
+    /* 🔸 Fondo oscuro al ampliar el logo */
+    .overlay {
       position: fixed;
-      z-index: 2000;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 9999;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    .modal-logo img {
-      max-width: 80%;
+    .overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .overlay img {
+      max-width: 60%;
       max-height: 80%;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
       transition: transform 0.3s ease;
     }
 
-    .modal-logo img:hover {
+    .overlay img:hover {
       transform: scale(1.05);
     }
 
-    .modal-logo .close-logo {
+    .close-btn {
       position: absolute;
       top: 20px;
       right: 40px;
-      color: #fff;
       font-size: 2rem;
-      font-weight: bold;
+      color: white;
       cursor: pointer;
-    }
-
-    /* Tamaño imágenes de diagramas más grandes */
-    .panel img.diagram {
-      max-width: 90%;
-      height: auto;
-      display: block;
-      margin: 1rem auto;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header d-flex align-items-center px-4 py-3">
+  <!--header -->
+  <header class="header d-flex align-items-center px-4 py-2">
     <img src="img/logo.jpg" alt="Logo" class="logo me-3" id="logo">
     <h1 class="titulo m-0">SISTEMA DE CONTROL DE ALMACÉN PARA LA UNIDAD DE ADMINISTRACIÓN POLICIAL DE LA PAZ</h1>
   </header>
 
-  <!-- Menú principal -->
+  <!-- 🔹 Contenedor para mostrar logo ampliado -->
+  <div class="overlay" id="logoOverlay">
+    <span class="close-btn" id="closeOverlay">&times;</span>
+    <img src="img/logo.jpg" alt="Logo ampliado">
+  </div>
+
+  <!--menú principal -->
   <nav class="menu">
     <ul>
       <li class="item" data-content="inicio">Inicio</li>
@@ -80,35 +83,58 @@
     </ul>
   </nav>
 
-  <!-- Área central -->
+  <!-- area central -->
   <div id="contenido-central">
-
-    <!-- Inicio con carrusel -->
-    <div id="inicio" class="panel" style="display:block;">
-      <div id="carrusel-inicio" class="carousel slide mx-auto" style="max-width: 700px;" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/imagen2.jpeg" class="d-block w-100" alt="Imagen 1">
+    <div id="inicio" class="panel">
+      <div class="card-container">
+        <div class="card-item">
+          <div class="card-img">
+            <div class="pastel1"></div>
           </div>
-          <div class="carousel-item">
-            <img src="img/imagen1.jpeg" class="d-block w-100" alt="Imagen 2">
-          </div>
-          <div class="carousel-item">
-            <img src="img/imagen3.jpg" class="d-block w-100" alt="Imagen 3">
+          <div class="card-info">
+            <p class="text-title">Uniformados de la verde Olivo</p>
+            <p class="text-body">formando para el parte matutino</p>
+            <button class="card-button" onclick="window.location.href='https://abi.bo/index.php/seguridad2/26530-el-gobierno-alista-una-redistribucion-de-los-policias-en-los-diferentes-municipios-sobre-la-base-de-un-estudio-matematico-de-analisis'">Más información</button>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carrusel-inicio" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carrusel-inicio" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
+        
+        <div class="card-item">
+          <div class="card-img">
+            <div class="pastel2"></div>
+          </div>
+          <div class="card-info">
+            <p class="text-title">Estación de Policía de La Paz</p>
+            <p class="text-body">Mejorar el ambiente de los policías</p>
+            <button class="card-button" onclick="window.location.href='https://portada.com.co/estacion-de-policia-de-la-paz-sera-remodelada/'">Más información</button>
+          </div>
+        </div>
+        
+        <div class="card-item">
+          <div class="card-img">
+            <div class="pastel3"></div>
+          </div>
+          <div class="card-info">
+            <p class="text-title">XVII Ayuntamiento de La Paz</p>
+            <p class="text-body">Se encarga de administrar los asuntos locales, prestar servicios públicos esenciales.</p>
+            <button class="card-button" onclick="window.location.href='https://www.lapaz.gob.mx/'">Más información</button>
+          </div>
+        </div>
+        
+        <div class="card-item">
+          <div class="card-img">
+            <div class="pastel4"></div>
+          </div>
+          <div class="card-info">
+            <p class="text-title">Vehículos Policiales</p>
+            <p class="text-body">Para asegurar eficiencia de la verde Olivo</p>
+            <button class="card-button" onclick="window.location.href='https://www.eldiario.net/portal/2023/12/24/gobernacion-entrega-camionetas-y-mobiliario-a-la-policia-boliviana/'">Más información</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Módulo Principal -->
     <div id="modulo" class="panel">
-      <h2>Módulo Principal</h2>
+      <h2 class="text-center my-3">Módulo Principal</h2>
       <p>
         El módulo principal del sistema de control de almacén fue diseñado para gestionar de manera 
         eficiente los materiales de escritorio y limpieza de la Unidad de Administración Policial de La Paz. 
@@ -120,12 +146,13 @@
         facilitar reportes automáticos sobre inventario y consumo. Además, el sistema ofrece distintos 
         niveles de acceso (administrador, jefe de almacén y usuario), asegurando un manejo ordenado y seguro.
       </p>
-      <img src="img/modulo.png" alt="Módulo principal" class="diagram">
+      <div class="text-center my-3">
+        <img src="img/modulo.png" class="img-fluid rounded shadow" style="max-width:600px;">
+      </div>
     </div>
 
-    <!-- Marco Teórico -->
     <div id="teorico" class="panel">
-      <h2>Marco Teórico del Proyecto</h2>
+      <h2 class="text-center my-3">Marco Teórico del Proyecto</h2>
       <p>
         El sistema surge ante la necesidad de modernizar la gestión manual de materiales dentro de la Unidad de 
         Administración Policial de La Paz. La falta de registros digitales ocasionaba pérdidas, retrasos y 
@@ -143,105 +170,138 @@
       </p>
     </div>
 
-    <!-- Módulo Ambiental -->
     <div id="ambiental" class="panel">
-      <h2>Módulo Ambiental</h2>
+      <h2 class="text-center my-3">Módulo Ambiental</h2>
       <p>
         Este módulo busca fomentar prácticas sostenibles dentro de la gestión del almacén policial, promoviendo 
         el uso responsable de materiales y la reducción de desperdicios. Se propone integrar indicadores de 
         impacto ambiental y mecanismos de reutilización de insumos cuando sea posible.
       </p>
-      <img src="img/M_Ambiental.png" alt="Módulo Ambiental" class="diagram">
+      <div class="text-center my-3">
+        <img src="img/M_Ambiental.png" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen del módulo ambiental">
+      </div>
     </div>
 
-    <!-- Módulo de Comportamiento -->
     <div id="comportamiento" class="panel">
-      <h2>Módulo de Comportamiento</h2>
+      <h2 class="text-center my-3">Módulo de Comportamiento</h2>
       <p>
         Este módulo analiza el comportamiento de los usuarios del sistema y el personal encargado del almacén. 
         Busca mejorar la eficiencia mediante la capacitación y la motivación del personal, incentivando el uso 
         adecuado del sistema informático y el cumplimiento de los procedimientos establecidos.
       </p>
-      <img src="img/M_Comportamiento.png" alt="Módulo Comportamiento" class="diagram">
+      <div class="text-center my-3">
+        <img src="img/M_Comportamiento.png" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen del módulo comportamiento">
+      </div>
     </div>
 
-    <!-- Orientado a objetos -->
     <div id="oop" class="panel">
-      <h2>Orientado a Objetos</h2>
+      <h2 class="text-center my-3">Orientado a Objetos</h2>
       <p>
         La orientación a objetos se aplica en el desarrollo del sistema para estructurar el código en clases, 
         métodos y objetos que representan las entidades del almacén, como materiales, usuarios y reportes. 
-        Este enfoque facilita la mantenibilidad, la reutilización del código y la escalabilidad del sistema..
+        Este enfoque facilita la mantenibilidad, la reutilización del código y la escalabilidad del sistema.
       </p>
-      <img src="img/M_Objetos.png" alt="Orientado a objetos" class="diagram">
+      <div class="text-center my-3">
+        <img src="img/M_Objetos.png" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen orientada a objetos">
+      </div>
     </div>
 
-    <!-- Video -->
     <div id="video" class="panel">
-      <h2>Video</h2>
-      <p>Espacio para insertar video</p>
+      <h2 class="text-center my-3">Video del Proyecto</h2>
+      <div class="text-center">
+        <p>Aquí se insertará el video explicativo del proyecto</p>
+      </div>
     </div>
-
   </div>
 
-  <!-- Modal para logo -->
-  <div class="modal-logo" id="modalLogo">
-    <span class="close-logo" id="closeLogo">&times;</span>
-    <img src="img/logo.jpg" alt="Logo ampliado">
-  </div>
-
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Proyecto Web. Todos los derechos reservados.</p>
   </footer>
 
   <script>
-    const items = document.querySelectorAll('.menu .item[data-content]');
-    const subitems = document.querySelectorAll('.submenu .subitem');
-    const panels = document.querySelectorAll('.panel');
+document.addEventListener('DOMContentLoaded', function() {
+  const items = document.querySelectorAll('.menu .item[data-content]');
+  const subitems = document.querySelectorAll('.submenu .subitem');
+  const panels = document.querySelectorAll('.panel');
 
-    function mostrarContenido(id) {
-      panels.forEach(panel => panel.style.display = 'none');
-      const target = document.getElementById(id);
-      if (target) target.style.display = 'block';
+  function inicializarPaneles() {
+    panels.forEach(panel => {
+      panel.style.display = 'none';
+      panel.classList.remove('active');
+    });
+    const inicioPanel = document.getElementById('inicio');
+    if (inicioPanel) {
+      inicioPanel.style.display = 'block';
+      inicioPanel.classList.add('active');
     }
+  }
 
-    items.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        const targetId = item.getAttribute('data-content');
-        if (targetId) mostrarContenido(targetId);
-      });
+  function mostrarContenido(id) {
+    panels.forEach(panel => {
+      panel.style.display = 'none';
+      panel.classList.remove('active');
     });
+    const target = document.getElementById(id);
+    if (target) {
+      target.style.display = 'block';
+      target.classList.add('active');
+    }
+  }
 
-    subitems.forEach(subitem => {
-      subitem.addEventListener('click', () => {
-        const targetId = subitem.getAttribute('data-content');
-        if (targetId) mostrarContenido(targetId);
-      });
-      subitem.addEventListener('mouseenter', () => {
-        const targetId = subitem.getAttribute('data-content');
-        if (targetId) mostrarContenido(targetId);
-      });
+  inicializarPaneles();
+
+  items.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetId = item.getAttribute('data-content');
+      if (targetId) mostrarContenido(targetId);
     });
+  });
 
-    // Modal logo
-    const logo = document.getElementById('logo');
-    const modalLogo = document.getElementById('modalLogo');
-    const closeLogo = document.getElementById('closeLogo');
-
-    logo.addEventListener('click', () => {
-      modalLogo.style.display = 'flex';
+  subitems.forEach(subitem => {
+    subitem.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetId = subitem.getAttribute('data-content');
+      if (targetId) mostrarContenido(targetId);
     });
+  });
 
-    closeLogo.addEventListener('click', () => {
-      modalLogo.style.display = 'none';
-    });
-
-    modalLogo.addEventListener('click', (e) => {
-      if (e.target === modalLogo) {
-        modalLogo.style.display = 'none';
+  document.querySelectorAll('.menu .item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      const submenu = this.querySelector('.submenu');
+      if (submenu) {
+        submenu.style.opacity = '1';
+        submenu.style.visibility = 'visible';
       }
     });
+    
+    item.addEventListener('mouseleave', function() {
+      const submenu = this.querySelector('.submenu');
+      if (submenu) {
+        submenu.style.opacity = '0';
+        submenu.style.visibility = 'hidden';
+      }
+    });
+  });
+
+  // 🔹 Evento para ampliar el logo
+  const logo = document.getElementById('logo');
+  const overlay = document.getElementById('logoOverlay');
+  const closeBtn = document.getElementById('closeOverlay');
+
+  logo.addEventListener('click', () => {
+    overlay.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('active');
+  });
+});
   </script>
+
 </body>
 </html>
