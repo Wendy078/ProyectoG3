@@ -1,109 +1,288 @@
-.header {
-  background-color: #222;
-  color: white;
-  display: flex;
-  align-items: center;
-  border-bottom: 2px solid #444;
+
+
+/* --- Fuente general --- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --color-primario: #273c75;
+  --color-secundario: #40739e;
+  --color-fondo: #f5f6fa;
+  --color-texto: #2f3640;
+  --color-panel: #ffffff;
+  --color-gris-suave: #dcdde1;
+  --radio: 16px;
+  --transicion: all 0.3s ease;
 }
 
-.logo {
-  height: 50px;
-  width: auto;
-}
-
-.titulo {
-  display: flex;
-  align-items: center;
-  font-size: 1.8em;
-  font-weight: bold;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.item {
-  position: relative;
-  padding: 15px 20px;
-  cursor: pointer;
+/* --- Encabezado --- */
+.header {
+  background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
 }
 
-#contenido-central {
-  text-align: center;
-  padding: 40px;
+.logo {
+  height: 60px;
+  width: auto;
+  border-radius: 10px;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
 }
 
-.panel {
-  display: none;
-  font-size: 1.2em;
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+/* --- Menú principal --- */
+.menu {
   background: #fff;
-  border: 1px solid #ccc;
-  padding: 30px;
-  margin: 20px auto;
-  width: 60%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-bottom: 1px solid #e3e3e3;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-footer {
-  background: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
+.menu .item {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  color: var(--color-primario);
+  position: relative;
+  cursor: pointer;
+  transition: var(--transicion);
+}
+
+.menu .item:hover {
+  color: var(--color-secundario);
+  background-color: rgba(64, 115, 158, 0.05);
+}
+
+/* --- Submenú --- */
+.menu .submenu {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border-radius: var(--radio);
+  top: 100%;
+  left: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.menu .submenu .subitem {
+  padding: 0.75rem 1rem;
+  color: var(--color-texto);
+  text-align: left;
+  transition: var(--transicion);
+}
+
+.menu .submenu .subitem:hover {
+  background: var(--color-secundario);
+  color: #fff;
+}
+
+.menu .item:hover > .submenu {
+  display: block;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* --- Animación de aparición --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Área central --- */
 #contenido-central {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding: 4rem 1rem;
   min-height: 80vh;
-  text-align: center;
-  padding: 40px;
+  background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
 }
 
+/* --- Paneles de contenido --- */
 .panel {
   display: none;
-  font-size: 1.5em;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 40px;
-  width: 80%;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-.menu {
-  background: #333;
-  color: white;
-  position: relative;
-  z-index: 1000;
+  background: var(--color-panel);
+  border-radius: var(--radio);
+  padding: 3rem;
+  width: 85%;
+  max-width: 900px;
+  margin: 2rem auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transicion);
 }
 
-.menu ul { 
-  list-style: none; 
-  margin: 0; 
-  padding: 0; 
+.panel h2 {
+  text-align: center;
+  color: var(--color-primario);
+  font-size: 1.9rem;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
-    .menu .item { 
-      position: relative; 
-      display: inline-block; 
-      cursor: pointer; 
-      padding: .5rem 1rem; 
-    }
-    .menu .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #111111;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
-      min-width: 200px;
-      z-index: 999;
-    }
-    .menu .submenu .subitem { 
-      display: block; 
-      padding: .5rem 1rem; 
-      white-space: nowrap;
-    }
-    .menu .item:hover > .submenu { 
-      display: block; 
-    }
+
+.panel h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-secundario);
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+.panel p {
+  color: #555;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+.panel img {
+  border-radius: 14px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.panel img:hover {
+  transform: scale(1.03);
+}
+
+.panel:target,
+.panel[style*="display: block"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Carrusel --- */
+.carousel-inner img {
+  border-radius: var(--radio);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+/* --- Footer --- */
+footer {
+  background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+  color: #fff;
+  text-align: center;
+  padding: 1.8rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  margin-top: 3rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+}
+
+footer p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* --- Botones generales (si agregas en el futuro) --- */
+button, .btn {
+  background: var(--color-secundario);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transicion);
+}
+
+button:hover, .btn:hover {
+  background: var(--color-primario);
+  transform: translateY(-2px);
+}
+
+/* --- Adaptabilidad móvil --- */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .menu .item {
+    display: block;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .panel {
+    width: 95%;
+    padding: 2rem;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* --- Sutil animación al hacer hover --- */
+.menu .item::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--color-secundario);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.menu .item:hover::after {
+  transform: scaleX(1);
+}
