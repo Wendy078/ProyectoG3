@@ -1,0 +1,83 @@
+git status        # Ver qué cambió
+git add .         # Añadir todos los cambios
+git commit -m ""  # Guardar cambios
+git pull          # Traer cambios de GitHub
+git push          # Subir tus cambios a GitHub
+git branch        # Ver ramas
+git checkout rama # Cambiar de rama
+
+
+
+
+# --- CONFIGURACIÓN DEL USUARIO ---
+git config --global user.name "Tu Nombre"       # Configura tu nombre para los commits
+git config --global user.email "tuemail@mail"   # Configura tu email para los commits
+git config user.name                            # Muestra tu nombre actual
+git config user.email                           # Muestra tu email actual
+
+
+# --- ESTADO DEL PROYECTO ---
+git status                                      # Muestra archivos modificados, nuevos o borrados
+git diff                                        # Muestra diferencias entre archivos cambiados
+
+
+# --- AÑADIR ARCHIVOS AL COMMIT ---
+git add archivo.txt                             # Agrega un archivo específico
+git add .                                       # Agrega TODOS los cambios
+
+
+# --- CREAR COMMITS ---
+git commit -m "Mensaje del commit"              # Crea commit con un mensaje
+git commit -am "Mensaje"                        # Añade y commitea solo archivos ya trackeados
+
+
+# --- TRABAJAR CON EL REPOSITORIO REMOTO ---
+git remote -v                                   # Muestra la URL del repositorio remoto
+git fetch                                       # Descarga info del remoto sin fusionar
+git pull                                        # Trae cambios del remoto y actualiza tu rama
+git push                                        # Sube tus commits a GitHub
+git push -u origin rama                         # Sube y crea tracking de la rama por primera vez
+
+
+# --- RAMAS (BRANCHES) ---
+git branch                                      # Lista ramas locales
+git branch -r                                   # Lista ramas remotas
+git checkout rama                               # Cambia a una rama existente
+git checkout -b nuevaRama                       # Crea una nueva rama y cambia a ella
+git branch -d rama                              # Elimina rama local
+git branch --set-upstream-to=origin/rama rama   # Conecta rama local con la remota
+
+
+# --- MERGE / FUSIÓN ---
+git merge rama                                  # Fusiona una rama en la actual
+git merge --abort                               # Cancela un merge en conflicto
+
+
+# --- SOLUCIÓN DE ERRORES Y CONFLICTOS ---
+git pull --rebase                                # Baja cambios integrándolos linealmente
+git rebase main                                  # Reescribe commits sobre otra rama
+git restore archivo.txt                          # Revierte cambios NO añadidos
+git reset archivo.txt                            # Saca archivo del área de preparación
+git reset --hard                                 # Revierte TODO al último commit (peligroso)
+git reset --hard origin/main                     # Fuerza a igualarse al remoto
+
+
+# --- HISTORIAL ---
+git log                                          # Historial completo de commits
+git log --oneline                                # Historial resumido, 1 línea por commit
+git show id                                      # Muestra detalles de un commit específico
+
+
+# --- CLONAR Y EMPEZAR PROYECTOS ---
+git clone URL                                    # Clona un repositorio de GitHub
+git init                                         # Crea un nuevo repositorio local en una carpeta
+
+
+# --- SUBIR ARCHIVOS NUEVOS AL REMOTO ---
+git push origin rama                             # Sube tus commits a la rama espesífica
+git push --set-upstream origin rama              # Crea rama remota y la vincula a la local
+
+
+# --- LIMPIEZA ---
+git clean -n                                     # Muestra archivos sin seguimiento que se borrarían
+git clean -f                                     # Borra archivos no deseados que no están en git
