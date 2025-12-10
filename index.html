@@ -49,22 +49,39 @@
       color: white;
       cursor: pointer;
     }
+    /* NUEVO ESTILO: Reducir el tamaño ampliado del logo de la empresa */
+#empresaLogoOverlay img {
+    max-width: 40%; /* Reducido al 40% del ancho de la pantalla (antes 60%) */
+}
+
+/* Opcional: Si quieres que el logo de la policía sea un poco más grande */
+#logoOverlay img {
+    max-width: 70%; /* Le damos un poco más de tamaño al principal (opcional) */
+}
   </style>
 </head>
 <body>
-
+<div id="diagram-overlay"></div>
   <!--header -->
-  <header class="header d-flex align-items-center px-4 py-2">
-    <img src="img/logo.jpg" alt="Logo" class="logo me-3" id="logo">
-    <h1 class="titulo m-0">SISTEMA DE CONTROL DE ALMACÉN PARA LA UNIDAD DE ADMINISTRACIÓN POLICIAL DE LA PAZ</h1>
-  </header>
+<header class="header">
+    <div class="header-content-wrapper">
+        <img src="img/logo.jpg" alt="Logo Policía" class="logo policia-logo" id="logo">
+        
+        <h1 class="titulo">SISTEMA DE CONTROL DE ALMACÉN PARA LA UNIDAD DE ADMINISTRACIÓN POLICIAL DE LA PAZ</h1>
+        
+        <img src="img/ejemplo.webp" alt="Logo Empresa de Software" class="logo empresa-logo" id="empresaLogo">
+    </div>
+</header>
 
   <!-- 🔹 Contenedor para mostrar logo ampliado -->
   <div class="overlay" id="logoOverlay">
     <span class="close-btn" id="closeOverlay">&times;</span>
     <img src="img/logo.jpg" alt="Logo ampliado">
   </div>
-
+  <div class="overlay" id="empresaLogoOverlay">
+    <span class="close-btn" id="closeEmpresaOverlay">&times;</span>
+    <img src="img/ejemplo.webp" alt="Logo de la Empresa ampliado">
+  </div>
   <!--menú principal -->
   <nav class="menu">
     <ul>
@@ -178,7 +195,7 @@
         impacto ambiental y mecanismos de reutilización de insumos cuando sea posible.
       </p>
       <div class="text-center my-3">
-        <img src="img/M_Ambiental.png" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen del módulo ambiental">
+        <img src="img/M_Ambiental.png" class="diagram-image" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen del módulo ambiental">
       </div>
     </div>
 
@@ -190,7 +207,7 @@
         adecuado del sistema informático y el cumplimiento de los procedimientos establecidos.
       </p>
       <div class="text-center my-3">
-        <img src="img/M_Comportamiento.png" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen del módulo comportamiento">
+        <img src="img/M_Comportamiento.png" class="diagram-image" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen del módulo comportamiento">
       </div>
     </div>
 
@@ -202,7 +219,7 @@
         Este enfoque facilita la mantenibilidad, la reutilización del código y la escalabilidad del sistema.
       </p>
       <div class="text-center my-3">
-        <img src="img/M_Objetos.png" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen orientada a objetos">
+        <img src="img/M_Objetos.png" class="diagram-image" class="img-fluid rounded shadow" style="max-width:600px;" alt="Imagen orientada a objetos">
       </div>
     </div>
 
@@ -214,9 +231,25 @@
     </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Proyecto Web. Todos los derechos reservados.</p>
-  </footer>
+ <footer>
+    <div class="footer-content">
+        <div class="contacto-info">
+            <h4 class="contacto-titulo">Contáctanos</h4>
+            <p>📧 Correo: <a href="mailto:info@proyectoweb.com">info@proyectoweb.com</a></p>
+            <p>📞 Teléfono: <a href="tel:+59121234567" class="footer-link-action">+591 2 1234567</a></p>
+          <p>📱 WhatsApp: <a href="https://wa.me/59121234567" target="_blank" class="footer-link-action">+591 2 1234567</a></p>
+          </div>
+        <div class="social-links">
+            <h4 class="contacto-titulo">Síguenos</h4>
+            <a href="URL_DE_TU_FACEBOOK" target="_blank" class="social-icon">Facebook</a>
+            <a href="URL_DE_TU_TWITTER" target="_blank" class="social-icon">Twitter</a>
+            <a href="URL_DE_TU_INSTAGRAM" target="_blank" class="social-icon">Instagram</a>
+        </div>
+        <div class="copyright-info">
+            <p class="derechos">&copy; 2025 Proyecto Web. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 
   <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -284,24 +317,116 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 🔹 Evento para ampliar el logo
-  const logo = document.getElementById('logo');
-  const overlay = document.getElementById('logoOverlay');
-  const closeBtn = document.getElementById('closeOverlay');
+// 🔹 Evento para ampliar el logo de la Policía (policiaLogo)
+  const policiaLogo = document.getElementById('logo'); // Logo principal
+  const policiaOverlay = document.getElementById('logoOverlay');
+  const closePoliciaBtn = document.getElementById('closeOverlay');
 
-  logo.addEventListener('click', () => {
-    overlay.classList.add('active');
+  policiaLogo.addEventListener('click', () => {
+    policiaOverlay.classList.add('active');
   });
 
-  closeBtn.addEventListener('click', () => {
-    overlay.classList.remove('active');
+  closePoliciaBtn.addEventListener('click', () => {
+    policiaOverlay.classList.remove('active');
   });
 
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.classList.remove('active');
+  policiaOverlay.addEventListener('click', (e) => {
+    if (e.target === policiaOverlay) policiaOverlay.classList.remove('active');
   });
-});
-  </script>
 
+  // 🔹 NUEVOS Eventos para ampliar el logo de la Empresa (empresaLogo)
+  const empresaLogo = document.getElementById('empresaLogo'); // Nuevo ID para el logo de la empresa
+  const empresaOverlay = document.getElementById('empresaLogoOverlay');
+  const closeEmpresaBtn = document.getElementById('closeEmpresaOverlay');
+
+  // Asegura que los elementos existan antes de añadir el listener
+  if (empresaLogo && empresaOverlay) { 
+    empresaLogo.addEventListener('click', () => {
+      empresaOverlay.classList.add('active');
+    });
+
+    closeEmpresaBtn.addEventListener('click', () => {
+      empresaOverlay.classList.remove('active');
+    });
+
+    empresaOverlay.addEventListener('click', (e) => {
+      if (e.target === empresaOverlay) empresaOverlay.classList.remove('active');
+    });
+  }
+}); // Cierre del DOMContentLoaded
+</script>
+<script>
+    const cards = document.querySelectorAll('.card-item');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calcular la rotación: más cerca del centro, menos rotación.
+            const midX = rect.width / 2;
+            const midY = rect.height / 2;
+
+            // Valores de rotación (puedes ajustar 5 y 10 para más o menos efecto)
+            const rotationY = ((x - midX) / midX) * 5; // Rotación de 5 grados máximo en Y
+            const rotationX = ((midY - y) / midY) * 10; // Rotación de 10 grados máximo en X
+
+            // Aplicar la transformación 3D
+            card.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale(1.03)`;
+        });
+
+        // Restablecer la transformación cuando el ratón sale
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const diagramImages = document.querySelectorAll('.diagram-image');
+        const overlay = document.getElementById('diagram-overlay');
+        const overlayImage = document.createElement('img'); // Crear un elemento <img> para el overlay
+
+        overlay.appendChild(overlayImage); // Añadir el <img> al overlay
+
+        diagramImages.forEach(img => {
+            // Escucha el evento de DOBLE CLIC (dblclick)
+            img.addEventListener('dblclick', function() {
+                // 1. Copia la fuente de la imagen original al overlay
+                overlayImage.src = this.src;
+
+                // 2. Muestra el overlay con transición
+                overlay.style.display = 'flex';
+                // Usamos un pequeño delay para que la transición de opacidad funcione
+                setTimeout(() => {
+                    overlay.style.opacity = 1;
+                }, 10);
+                
+                // 3. Bloquea el scroll del cuerpo para que no se mueva el fondo
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Función para cerrar el overlay
+        function closeOverlay() {
+            overlay.style.opacity = 0;
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restaura el scroll
+            }, 500); // Espera el tiempo de la transición CSS
+        }
+
+        // Cierra al hacer clic en cualquier parte del overlay
+        overlay.addEventListener('click', closeOverlay);
+
+        // Cierra al presionar la tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay.style.display === 'flex') {
+                closeOverlay();
+            }
+        });
+    });
+</script>
 </body>
 </html>
